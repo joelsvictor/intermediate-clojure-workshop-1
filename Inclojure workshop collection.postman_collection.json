@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "1ffbb028-fcfa-4f2b-bb2a-6eac2c49d627",
+		"name": "Inclojure workshop collection",
+		"description": "Collection for inclojure 2020 workshop. This collection will assist us in building the REST API.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Hello world",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:65535/?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "65535",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Joel",
+							"disabled": true
+						},
+						{
+							"key": "surname",
+							"value": "Victor",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Query our hello world web server."
+			},
+			"response": []
+		},
+		{
+			"name": "Create a profile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:65535/joel?dob=2001-01-01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "65535",
+					"path": [
+						"joel"
+					],
+					"query": [
+						{
+							"key": "dob",
+							"value": "2001-01-01"
+						}
+					]
+				},
+				"description": "Given a name and an age create an entry for a person."
+			},
+			"response": []
+		},
+		{
+			"name": "Get details about a profile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:65535/joel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "65535",
+					"path": [
+						"joel"
+					]
+				},
+				"description": "Get details about a profile given a name."
+			},
+			"response": []
+		},
+		{
+			"name": "Update a profile",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:65535/joel?dob=2001-02-01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "65535",
+					"path": [
+						"joel"
+					],
+					"query": [
+						{
+							"key": "dob",
+							"value": "2001-02-01"
+						}
+					]
+				},
+				"description": "Given a profile update its details."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a given profile",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:65535/joel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "65535",
+					"path": [
+						"joel"
+					]
+				},
+				"description": "Delete the profile. We don't want to be liable."
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
