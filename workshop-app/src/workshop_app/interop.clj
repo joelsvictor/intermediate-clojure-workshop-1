@@ -1,4 +1,4 @@
-(ns chapter02.interop-syntax
+(ns workshop-app.interop
   (:refer-clojure :rename {get cc-get})
   (:import (java.util Calendar)))
 

@@ -1,10 +1,9 @@
-(ns chapter01.in-mem-database
+(ns workshop-app.db.in-mem
   (:refer-clojure :rename {update cc-update
-                           read cc-read}))
+                           read   cc-read}))
 
 
 (def conn (atom {}))
-
 
 (defn create
   "Create an entry for k in our given in memory datastore."
