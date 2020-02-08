@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="WorkshoAppRemoveREPL" type="ClojureREPL" factoryName="Remote" activateToolWindowBeforeRun="false">
+  <configuration default="false" name="WorkshoAppRemoteREPL" type="ClojureREPL" factoryName="Remote" activateToolWindowBeforeRun="false">
     <module name="workshop-app" />
     <setting name="host" value="" />
     <setting name="port" value="0" />
