@@ -38,5 +38,10 @@
   (with-open [statement (doto (.prepareStatement ^Connection conn "select name, dob from person where name=?")
                           (.setString 1 k))]
     (with-open [rs (.executeQuery statement)]
-      (when-let [rs* (.next rs)]
-        (.getString rs 2)))))
+      (when (.next rs)
+        (let [rs-meta (.getMetaData rs)
+              column-count (.getColumnCount rs-meta)]
+          (into {}
+                (map (fn [idx] [(.getColumnLabel rs-meta (int idx))
+                                (.getObject rs (int idx))])
+                     (range 1 (inc column-count)))))))))
