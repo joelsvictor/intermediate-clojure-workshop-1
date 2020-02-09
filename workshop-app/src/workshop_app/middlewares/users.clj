@@ -26,3 +26,13 @@
               :body "Invalid date format."}))
       {:status 400
        :body "Date is missing."})))
+
+
+(defn handle-any-exception
+  [handler]
+  (fn [request]
+    (try (handler request)
+         (catch Exception e
+           (.printStackTrace e)
+           {:status 500
+            :body "Internal server exception."}))))
