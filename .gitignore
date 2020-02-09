@@ -4,3 +4,4 @@ workshop-app/.idea/libraries/
 workshop-app/.idea/*.xml
 workshop-app/workshop-app.iml
 workshop-app/.lein-repl-history
+workshop-app/.nrepl-port

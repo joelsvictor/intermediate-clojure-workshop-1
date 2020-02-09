@@ -9,7 +9,12 @@
     (LocalDate/parse dt-str)))
 
 
+(defn dt-after?
+  [d1 d2]
+  (.isAfter d1 d2))
+
+
 (defn days-between
   [d1 d2]
-  (when (.isAfter d2 d1)
+  (when (dt-after? d2 d1)
     (.between ChronoUnit/YEARS d1 d2)))

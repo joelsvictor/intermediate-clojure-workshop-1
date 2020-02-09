@@ -43,8 +43,8 @@ Math/PI
 
 ;; doto
 (def doto-hm (doto (java.util.HashMap.)
-   (.put "a" 10)
-   (.put "b" 20)))
+               (.put "a" 10)
+               (.put "b" 20)))
 
 ;; new
 (def new-syntax-hm (new java.util.HashMap))
