@@ -1,14 +1,15 @@
 (ns workshop-app.mocking-fns
   (:require [clojure.test :refer :all]
             [workshop-app.handlers.users :as wahu]
-            [workshop-app.db.sqlite :as wads])
+            [workshop-app.db.sqlite :as wads]
+            [workshop-app.db.in-mem :as wadim])
   (:import (java.time LocalDate)))
 
 
 ;; Pattern 2
 (deftest add-person-test
-  (with-redefs [wads/create! (fn [_ k v] {:name "Joel Victor"
-                                          :dob   "2001-01-01"})]
+  (with-redefs [wads/conn wadim/conn
+                wads/create! wadim/create!]
     (is (= {:status 201
             :body   "Created profile."}
          (wahu/add-person {:params {:name "Joel Victor"
