@@ -7,11 +7,12 @@
 
 
 (defroutes crud-routes
+           (GET "/" _ wahu/get-handler)
            (POST "/:name" _ (-> wahu/add-person
                                 wamu/is-dob-before-today?
                                 wamu/validate-dob-format))
-           (GET "/:name" {:keys [params]} (wahu/get-person-details (get (wads/read wads/conn (:name params)) "dob")
-                                                                   (LocalDate/now)))
+           (GET "/:name" [name] (wahu/get-person-details (get (wads/read wads/conn name) "dob")
+                                                         (LocalDate/now)))
            (PUT "/:name" _ (-> wahu/update-person
                                wamu/is-dob-before-today?
                                wamu/validate-dob-format))
