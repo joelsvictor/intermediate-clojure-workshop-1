@@ -1,4 +1,5 @@
 (ns workshop-app.core
+  (:gen-class)
   (:require [ring.adapter.jetty :as raj]
             [ring.middleware.params :as rmp]
             [ring.middleware.keyword-params :as rmkp]
