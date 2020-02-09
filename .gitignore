@@ -5,3 +5,10 @@ workshop-app/.idea/*.xml
 workshop-app/workshop-app.iml
 workshop-app/.lein-repl-history
 workshop-app/.nrepl-port
+save-points/.local-m2/
+save-points/target/
+save-points/.idea/libraries/
+save-points/.idea/*.xml
+save-points/save-points.iml
+save-points/.lein-repl-history
+save-points/.nrepl-port
