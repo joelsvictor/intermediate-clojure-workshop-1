@@ -9,9 +9,9 @@
 (defn add-person
   [r]
   (try
-    (do (wads/create wads/conn
-                     (get-in r [:params :name])
-                     (get-in r [:params :dob]))
+    (do (wads/create! wads/conn
+                      (get-in r [:params :name])
+                      (get-in r [:params :dob]))
         {:status 201
          :body   "Created profile."})
     (catch SQLiteException sqle
@@ -36,9 +36,9 @@
 (defn update-person
   [r]
   (try
-    (do (wads/update wads/conn
-                     (get-in r [:params :name])
-                     (get-in r [:params :dob]))
+    (do (wads/update! wads/conn
+                      (get-in r [:params :name])
+                      (get-in r [:params :dob]))
         {:status 200
          :body "Updated profile."})
     (catch SQLiteException sqle
@@ -50,7 +50,7 @@
 (defn delete-person
   [n]
   (try
-    (do (wads/delete wads/conn n)
+    (do (wads/delete! wads/conn n)
         {:status 200
          :body   "Deleted profile."})
     (catch SQLiteException sqle

@@ -4,14 +4,16 @@
             [ring.middleware.params :as rmp]
             [ring.middleware.keyword-params :as rmkp]
             [workshop-app.routes :as war]
+            [workshop-app.middlewares.users :as wamu]
             [compojure.core :refer [defroutes GET POST PUT DELETE ANY]]))
 
 
 
 
 (defn -main [& _]
-  (raj/run-jetty (-> war/crud-routes
+  (raj/run-jetty (-> war/app-routes
                      rmkp/wrap-keyword-params
-                     rmp/wrap-params)
+                     rmp/wrap-params
+                     wamu/handle-any-exception)
                  {:port 65535
                   :join? false}))

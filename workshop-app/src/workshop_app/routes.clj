@@ -6,7 +6,7 @@
   (:import (java.time LocalDate)))
 
 
-(defroutes crud-routes
+(defroutes app-routes
            (GET "/" _ wahu/get-handler)
            (POST "/:name" _ (-> wahu/add-person
                                 wamu/is-dob-before-today?

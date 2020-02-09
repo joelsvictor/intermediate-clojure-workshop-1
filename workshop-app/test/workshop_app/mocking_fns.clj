@@ -7,8 +7,8 @@
 
 ;; Pattern 2
 (deftest add-person-test
-  (with-redefs [wads/create (fn [_ k v] {:name "Joel Victor"
-                                         :dob   "2001-01-01"})]
+  (with-redefs [wads/create! (fn [_ k v] {:name "Joel Victor"
+                                          :dob   "2001-01-01"})]
     (is (= {:status 201
             :body   "Created profile."}
          (wahu/add-person {:params {:name "Joel Victor"

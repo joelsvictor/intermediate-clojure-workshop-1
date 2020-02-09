@@ -9,7 +9,7 @@
   (.executeUpdate statement "create table if not exists person(name string primary key, dob string)"))
 
 
-(defn create
+(defn create!
   [conn k v]
   (let [statement (.prepareStatement ^Connection conn "insert into person values(?, ?)")]
     (.setString ^PreparedStatement statement 1 k)
@@ -18,7 +18,7 @@
     (.close statement)))
 
 
-(defn update
+(defn update!
   [conn k v]
   (with-open [statement (.prepareStatement ^Connection conn "update person set dob=? where name=?")]
     (.setString ^PreparedStatement statement 2 k)
@@ -26,7 +26,7 @@
     (.executeUpdate statement)))
 
 
-(defn delete
+(defn delete!
   [conn k]
   (with-open [statement (.prepareStatement ^Connection conn "delete from person where name=?")]
     (.setString ^PreparedStatement statement 1 k)
