@@ -1,6 +1,6 @@
 (ns workshop-app.interop
   (:refer-clojure :rename {get cc-get})
-  (:import (java.util Calendar)
+  (:import (java.util Calendar Comparator Collections List LinkedList ArrayList)
            (java.time.temporal ChronoUnit)
            (java.time LocalDate)))
 
@@ -74,6 +74,45 @@ Math/PI
 ;; AbstractMap.SimpleEntry("a", "b")
 (java.util.AbstractMap$SimpleEntry. "a" "b")
 
+;; reify example. Sort a array list of array list.
+;; List al = new ArrayList();
+;; List alChild1 = new ArrayList();
+;; alChild1.add(1);
+;; alChild1.add(2);
+;; List alChild2 = new ArrayList();
+;; alChild2.add(1);
+;; alChild2.add(2);
+;; List alChild3 = new ArrayList();
+;; alChild3.add(1);
+;; alChild3.add(2);
+;; List alChild1 = new ArrayList();
+;; alChild1.add(1);
+;; alChild1.add(2);
+;; al.add(alChild1);
+;; al.add(alChild2);
+;; al.add(alChild3);
+;; Collections.sort(l, new Compartor<ArrayList> {
+;;                       @Override
+;;                       public int compare(ArrayList al1, ArrayList al2) {
+;;                         return al1.elementAt(0) - al2.elementAt(0);
+;;                       }
+;;                     })
+(let [l (doto (ArrayList.)
+          (.add (doto (ArrayList.)
+                  (.add 1)
+                  (.add 2)))
+          (.add (doto (ArrayList.)
+                  (.add 2)
+                  (.add 3)))
+          (.add (doto (ArrayList.)
+                  (.add 3)
+                  (.add 4))))]
+  (Collections/sort l
+    (reify Comparator
+      (compare [_ al1 al2]
+        (- (.get ^ArrayList al2 (int 0))
+           (.get ^ArrayList al1 (int 0))))))
+  l)
 ;; Task: a small interop task. of finding the days between today and first January
 ;; following is a sample java code that you should translate to clojure interop code.
 ;;   LocalDate dateOne = LocalDate.of(2020,1,1);

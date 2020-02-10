@@ -6,11 +6,13 @@
 
 
 ;; Task: Make changes to this handler to say Hello <name>
-;; You can see what request is being printed and you can use functions provided
-;; by clojure.string
+;; You can see what request is being bound to a variable and
+;; you can use the functions provided by clojure.string to parse
+;; the query string. Use functions like keys and get to inspect
+;; the request in the REPL.
 (defn get-handler
   [request]
-  (println request)
+  (def r* request)
   {:status 200
    :body "Hello world!!!"})
 

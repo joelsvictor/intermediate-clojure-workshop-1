@@ -5,7 +5,11 @@
 (defn get-handler
   [request]
   {:status 200
-   :body   (str "Hello, " (get-in request [:params :name]) " " (get-in request [:params :surname]) "!!!")})
+   :body   (str "Hello, "
+                (get-in request [:params :name])
+                " "
+                (get-in request [:params :surname])
+                "!!!")})
 
 
 (defn add-person

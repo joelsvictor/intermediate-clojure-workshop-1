@@ -1,22 +1,22 @@
 (ns workshop-app.interop
   (:refer-clojure :rename {get cc-get})
-  (:import (java.util Calendar)))
+  (:import (java.util Calendar HashMap)))
 
 ;; class access
 ;; HashMap.class
-java.util.HashMap                                           ;; a class
+HashMap                                           ;; a class
 
 ;; new HashMap();
-(java.util.HashMap.)                                        ;; an object created from the class
+(HashMap.)                                        ;; an object created from the class
 
 ;; HashMap hm = new HashMap();
-(def hm (java.util.HashMap.))                               ;; bind the object to a var
+(def hm (HashMap.))                               ;; bind the object to a var
 
 ;; hm.put("a", 10);
 (.put hm "a" 10)
 
 ;; hm.put("b", 10);
-(.put ^java.util.HashMap hm "b" 10)                         ;; the first gives us a warning of how it cannot be resolved.
+(.put ^HashMap hm "b" 10)                         ;; the first gives us a warning of how it cannot be resolved.
 
 ;; Member access
 ;; method acess
@@ -60,13 +60,13 @@ Math/PI
 ;; HashMap dotoHm = new HashMap();
 ;; dotoHm.put("a", 10);
 ;; dotoHm.put("b", 20);
-(def doto-hm (doto (java.util.HashMap.)
+(def doto-hm (doto (HashMap.)
                (.put "a" 10)
                (.put "b" 20)))
 
 ;; new
 ;; HashMap newSyntaxHm = new HashMap();
-(def new-syntax-hm (new java.util.HashMap))
+(def new-syntax-hm (new HashMap))
 
 ;; accessing inner classes
 ;; AbstractMap.SimpleEntry("a", "b")
@@ -77,4 +77,6 @@ Math/PI
 ;;   LocalDate dateOne = LocalDate.of(2020,1,1);
 ;;   LocalDate dateTwo = LocalDate.now();
 ;;   long daysBetween = ChronoUnits.DAYS.between(dateOne, dateTwo);
-(.between java.time.temporal.ChronoUnit/DAYS (java.time.LocalDate/of 2020 1 1) (java.time.LocalDate/now))
+(.between ChronoUnit/DAYS
+          (LocalDate/of 2020 1 1)
+          (LocalDate/now))

@@ -77,4 +77,5 @@ Math/PI
 ;;   LocalDate dateOne = LocalDate.of(2020,1,1);
 ;;   LocalDate dateTwo = LocalDate.now();
 ;;   long daysBetween = ChronoUnits.DAYS.between(dateOne, dateTwo);
-(.between java.time.temporal.ChronoUnit/DAYS (java.time.LocalDate/of 2020 1 1) (java.time.LocalDate/now))
+(defn days-between [d1 d2]
+  (.between java.time.temporal.ChronoUnit/DAYS d1 d2))

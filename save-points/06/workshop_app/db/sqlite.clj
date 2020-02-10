@@ -3,7 +3,7 @@
                            read cc-read})
   (:import (java.sql DriverManager Connection PreparedStatement)))
 
-(def conn (DriverManager/getConnection "jdbc:sqlite::memory:"))
+(def conn (DriverManager/getConnection "jdbc:sqlite::prod_database_1"))
 
 (let [statement (.createStatement conn)]
   (.executeUpdate statement "create table if not exists person(name string primary key, dob string)"))
@@ -28,10 +28,9 @@
   [conn k])
 
 
-
 (defn read
   [conn k]
-  (with-open [statement (doto (.prepareStatement ^Connection conn "select name, dob from person where name=?")
+  (with-open [statement (_ (.prepareStatement ^Connection conn "select name, dob from person where name=?")
                           (.setString 1 k))]
     (with-open [rs (.executeQuery statement)]
       (when (.next rs)

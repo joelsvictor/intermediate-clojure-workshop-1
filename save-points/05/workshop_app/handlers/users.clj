@@ -18,7 +18,7 @@
         {:status 201
          :body "Create user."})
     {:status 400
-     :body "Bad request. Missing name or date of birth."}))
+     :body "User name or date of birth missing."}))
 
 
 (defn get-person
@@ -45,7 +45,7 @@
 (defn delete-person
   [name]
   (if name
-    (let [dob (wadim/delete wadim/conn name)]
+    (do (wadim/delete wadim/conn name)
       {:status  200
        :body "Deleted user."})
     {:status 400

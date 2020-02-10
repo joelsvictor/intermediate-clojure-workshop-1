@@ -5,25 +5,49 @@
   (:import (org.sqlite SQLiteException SQLiteErrorCode)))
 
 
+(defn get-handler
+  [{:keys [params] :as request}]
+  (def r* request)
+  (let [{:keys [name surname]} params]
+    (if (and name surname)
+      {:status 200
+       :body   (str "Hello, "
+                    name
+                    " "
+                    surname
+                    "!!!")}
+      {:status 400
+       :body "Missing name and surname."})))
 
+
+;; try {
+;;   create profile ...;
+;; } catch (SQLiteException sqle) {
+;;  if (SQLiteErrorCode.SQLITE_CONSTRAINT == sqle.getResultCode()) {
+;;    return ...;
+;;  } else {
+;;    throw sqle;
+;;  }
+;; }
 (defn add-person
-  [r]
+  [{:keys [name dob]}]
   (try
-    (do (wads/create! wads/conn
-                      (get-in r [:params :name])
-                      (get-in r [:params :dob]))
-        {:status 201
-         :body   "Created profile."})
+    (if (and name dob)
+      (do (wads/create! wads/conn
+                        name
+                        dob)
+          {:status 201
+           :body   "Created user."})
+      {:status 400
+       :body   "User name or date of birth missing."})
     (catch SQLiteException sqle
       (if (= SQLiteErrorCode/SQLITE_CONSTRAINT (.getResultCode sqle))
         {:status 400
          :body "User already exists."}
-        (do (.printStackTrace sqle)
-            {:status 500
-             :body   "Internal server error."})))))
+        (throw sqle)))))
 
 
-(defn get-person-details
+(defn get-person
   [dob now]
   {:status  200
    :headers {"content-type" "application/json"}
@@ -34,32 +58,23 @@
 
 
 (defn update-person
-  [r]
-  (try
+  [{:keys [name dob]}]
+  (if (and name dob)
     (do (wads/update! wads/conn
-                      (get-in r [:params :name])
-                      (get-in r [:params :dob]))
+                      name
+                      dob)
         {:status 200
-         :body "Updated profile."})
-    (catch SQLiteException sqle
-      (do (.printStackTrace sqle)
-          {:status 500
-           :body "Internal server error."}))))
+         :body   "Updated profile."})
+    {:status 400
+     :body "User name or dob is missing."}))
+
 
 
 (defn delete-person
   [n]
-  (try
+  (if n
     (do (wads/delete! wads/conn n)
         {:status 200
          :body   "Deleted profile."})
-    (catch SQLiteException sqle
-      (do (.printStackTrace sqle)
-          {:status 500
-           :body "Internal server error."}))))
-
-
-(defn get-handler
-  [request]
-  {:status 200
-   :body   (str "Hello, " (get-in request [:params :name]) " " (get-in request [:params :surname]) "!!!")})
+    {:status 400
+     :body "User name missing, cannot delete person without username."}))

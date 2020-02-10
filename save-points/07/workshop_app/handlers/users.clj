@@ -1,6 +1,8 @@
 (ns workshop-app.handlers.users
   (:require [workshop-app.db.sqlite :as wads]
-            [cheshire.core :as json]))
+            [workshop-app.interop :as wai]
+            [cheshire.core :as json])
+  (:import (java.time LocalDate)))
 
 (defn get-handler
   [request]
@@ -24,10 +26,15 @@
 (defn get-person
   [name]
   (if name
-    (let [dob (wads/read wads/conn name)]
+    (let [dob (wads/read wads/conn name)
+          age (when (.isAfter dob now)
+                (.between java.time.temporal.ChronoUnit/DAYS (java.time.LocalDate/parse dob) (java.time.LocalDate/now)))]
+          ;; age (wai/days-between (LocalDate/parse dob) (LocalDate/now))]
       {:status  200
        :headers {"content-type" "application/json"}
-       :body    (json/generate-string {:name name :dob dob})})
+       :body    (json/generate-string {:name name
+                                       :dob dob
+                                       :age age})})
     {:status 400
      :body "Bad request. Missing name."}))
 
