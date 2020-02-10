@@ -12,7 +12,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:65535/?",
+					"raw": "http://localhost:65535/?name=Joel&surname=Victor",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -24,13 +24,11 @@
 					"query": [
 						{
 							"key": "name",
-							"value": "Joel",
-							"disabled": true
+							"value": "Joel"
 						},
 						{
 							"key": "surname",
-							"value": "Victor",
-							"disabled": true
+							"value": "Victor"
 						}
 					]
 				},
@@ -44,7 +42,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:65535/joel?dob=2001-01-01",
+					"raw": "http://localhost:65535/joel?dob=2000-01-01",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -56,7 +54,7 @@
 					"query": [
 						{
 							"key": "dob",
-							"value": "2001-01-01"
+							"value": "2000-01-01"
 						}
 					]
 				},
@@ -90,7 +88,7 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:65535/joel?dob=2001-02-01",
+					"raw": "http://localhost:65535/joel?dob=2001-01-01",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -102,7 +100,7 @@
 					"query": [
 						{
 							"key": "dob",
-							"value": "2001-02-01"
+							"value": "2001-01-01"
 						}
 					]
 				},
