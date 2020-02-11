@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+ln -s ../save-points/$1 workshop-app/
