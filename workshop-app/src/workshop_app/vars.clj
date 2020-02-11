@@ -20,5 +20,3 @@
 
 (binding [b 10]
   (println (+ b 10)))
-
-

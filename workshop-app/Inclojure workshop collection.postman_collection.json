@@ -37,7 +37,7 @@
 			"response": []
 		},
 		{
-			"name": "Create a profile",
+			"name": "Create a user",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -58,12 +58,12 @@
 						}
 					]
 				},
-				"description": "Given a name and an age create an entry for a person."
+				"description": "Given a name and an age create an entry in the backend."
 			},
 			"response": []
 		},
 		{
-			"name": "Get details about a profile",
+			"name": "Get details about a user",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -78,12 +78,12 @@
 						"joel"
 					]
 				},
-				"description": "Get details about a profile given a name."
+				"description": "Get details for a given user."
 			},
 			"response": []
 		},
 		{
-			"name": "Update a profile",
+			"name": "Update a user",
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -104,12 +104,12 @@
 						}
 					]
 				},
-				"description": "Given a profile update its details."
+				"description": "For a given user update his dob."
 			},
 			"response": []
 		},
 		{
-			"name": "Delete a given profile",
+			"name": "Delete a given user",
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -124,7 +124,7 @@
 						"joel"
 					]
 				},
-				"description": "Delete the profile. We don't want to be liable."
+				"description": "Delete the user. We don't want to be liable #gdpr."
 			},
 			"response": []
 		}

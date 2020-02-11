@@ -74,6 +74,7 @@ Math/PI
 ;; AbstractMap.SimpleEntry("a", "b")
 (AbstractMap$SimpleEntry. "a" "b")
 
+
 ;; reify example. Sort an array list of array list using
 ;; a custom comparator.
 ;; List al = new ArrayList();
@@ -115,6 +116,8 @@ Math/PI
              (- (.get ^ArrayList al2 (int 0))
                 (.get ^ArrayList al1 (int 0))))))
   l)
+
+
 ;; a small interop task. of finding the days between today and first January
 ;; following is a sample java code that you should translate to clojure interop code.
 ;;   LocalDate dateOne = LocalDate.of(2020,1,1);

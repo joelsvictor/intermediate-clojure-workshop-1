@@ -64,17 +64,16 @@
                       name
                       dob)
         {:status 200
-         :body   "Updated profile."})
+         :body   "Updated user."})
     {:status 400
      :body "User name or dob is missing."}))
 
 
-
 (defn delete-person
-  [n]
-  (if n
-    (do (wads/delete! wads/conn n)
+  [name]
+  (if name
+    (do (wads/delete! wads/conn name)
         {:status 200
-         :body   "Deleted profile."})
+         :body   "Deleted user."})
     {:status 400
      :body "User name missing, cannot delete person without username."}))

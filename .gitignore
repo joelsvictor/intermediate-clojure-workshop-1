@@ -14,3 +14,5 @@ save-points/.lein-repl-history
 save-points/.nrepl-port
 workshop-app/*.sqlite
 save-points/.idea/save-points.iml
+save-points/workshop-app.iml
+workshop-app/.lein-failures

@@ -3,13 +3,20 @@
                            read cc-read})
   (:import (java.sql DriverManager Connection PreparedStatement)))
 
-;; Connection conn = DriverManager.getConnection();
-(def conn (DriverManager/getConnection "jdbc:sqlite:prod_database_1"))
+;; Connection conn = DriverManager.getConnection("jdbc:sqlite:prod_database_1.sqlite");
+(defn init-conn!
+  [conn-string]
+  (DriverManager/getConnection conn-string))
+
+(def conn (init-conn! "jdbc:sqlite:prod_database_1.sqlite"))
 
 ;; Statement statement = conn.createStatement();
 ;; statement.executeUpdate("create table if not exists person(name string primary key, dob string)");
-(let [statement (.createStatement conn)]
-  (.executeUpdate statement "create table if not exists person(name string primary key, dob string)"))
+;; statement.close()
+(defn create-table
+  [c]
+  (with-open [statement (.createStatement c)]
+    (.executeUpdate statement "create table if not exists person(name string primary key, dob string)")))
 
 
 ;; String k, v;
@@ -20,7 +27,7 @@
 ;; statement.close();
 (defn create!
   [conn k v]
-  (let [statement (.prepareStatement ^Connection conn "update person set dob=? where name=?")]
+  (let [statement (.prepareStatement ^Connection conn "insert into person(name, dob) values (?,?)")]
     (.setString ^PreparedStatement statement 1 k)
     (.setString ^PreparedStatement statement 2 v)
     (.executeUpdate statement)
@@ -58,7 +65,6 @@
 ;; Result result = rs.next();
 ;; ResultSetMetadata rsm =  result.getMetaData();
 ;; int columnCount = rsm.getColumnCount();
-;; TODO: Replace doto with _
 (defn read
   [conn k]
   (with-open [statement (doto (.prepareStatement ^Connection conn "select name, dob from person where name=?")

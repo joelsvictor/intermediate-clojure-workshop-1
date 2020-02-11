@@ -6,6 +6,7 @@
             [workshop-app.utils :as wau])
   (:import (java.time LocalDate)))
 
+
 (def date-tuple-generator
   (ctcg/let [month (ctcg/choose 1 12)]
             (case month
