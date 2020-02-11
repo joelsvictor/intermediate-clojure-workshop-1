@@ -8,4 +8,4 @@ fi
 next_level=$[current_level+1]
 echo $next_level > "./.current_level"
 echo "Moving savepoint " $next_level
-#ln -s ../save-points/$next_level ./workshop-app/
+ln -s ../save-points/$next_level ./workshop-app/
