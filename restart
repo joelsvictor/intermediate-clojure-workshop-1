@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+level=${1:-0}
+echo $level > .current_level
+echo "resetting to save point: " $level
+ln -s ./save-points/$level workshop-app/

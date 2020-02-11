@@ -1,0 +1,12 @@
+#!/bin/bash
+total_chapters=6
+if [ -f .current_level ]
+then
+  current_level=$(<.current_level)
+else
+  current_level=0
+fi
+next_level=$[(current_level+1)%total_chapters]
+echo $next_level > .current_level
+echo "Moving to savepoint: " $next_level
+ln -s ./save-points/$next_level ./workshop-app/

@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-level=${1:-0}
-echo "moving to level" $level
-ln -s ../save-points/$level workshop-app/
