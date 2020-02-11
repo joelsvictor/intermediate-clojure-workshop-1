@@ -3,4 +3,5 @@
 level=${1:-0}
 echo $level > .current_level
 echo "resetting to save point: " $level
-ln -s ./save-points/$level workshop-app/
+ln -s ./save-points/$level/src ./workshop-app/src
+ln -s ./save-points/$level/test ./workshop-app/test
