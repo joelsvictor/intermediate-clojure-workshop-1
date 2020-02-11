@@ -16,5 +16,6 @@
 
 (defn days-between
   [d1 d2]
-  (when (dt-after? d2 d1)
-    (.between ChronoUnit/YEARS d1 d2)))
+  (if (dt-after? d2 d1)
+    (.between ChronoUnit/YEARS d1 d2)
+    0))
