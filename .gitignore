@@ -16,3 +16,4 @@ workshop-app/*.sqlite
 save-points/.idea/save-points.iml
 save-points/workshop-app.iml
 workshop-app/.lein-failures
+.current_level
