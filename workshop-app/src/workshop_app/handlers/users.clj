@@ -2,7 +2,8 @@
   (:require [workshop-app.db.sqlite :as wads]
             [workshop-app.utils :as wau]
             [cheshire.core :as json])
-  (:import (org.sqlite SQLiteException SQLiteErrorCode)))
+  (:import (org.sqlite SQLiteException SQLiteErrorCode)
+           (java.time LocalDate)))
 
 
 (defn get-handler
@@ -31,20 +32,14 @@
 ;; }
 (defn add-person
   [{:keys [name dob]}]
-  (try
-    (if (and name dob)
-      (do (wads/create! wads/conn
-                        name
-                        dob)
-          {:status 201
-           :body   "Created user."})
-      {:status 400
-       :body   "User name or date of birth missing."})
-    (catch SQLiteException sqle
-      (if (= SQLiteErrorCode/SQLITE_CONSTRAINT (.getResultCode sqle))
-        {:status 400
-         :body "User already exists."}
-        (throw sqle)))))
+  (if (and name dob)
+    (do (wads/create! wads/conn
+                      name
+                      dob)
+        {:status 201
+         :body   "Created user."})
+    {:status 400
+     :body   "User name or date of birth missing."}))
 
 
 (defn get-person

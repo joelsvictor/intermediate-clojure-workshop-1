@@ -12,9 +12,10 @@
                       (with-redefs [wads/conn wadim/conn
                                     wads/create! wadim/create!
                                     wads/update! wadim/update!
-                                    wads/read wadim/read
+                                    wads/read (fn [conn k] {"dob" (wadim/read conn k)})
                                     wads/delete! wadim/delete!]
                         (t))))
+
 
 (deftest all-handlers-test
   (testing "Testing all handlers in one go."
