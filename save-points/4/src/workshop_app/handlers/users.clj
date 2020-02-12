@@ -18,15 +18,6 @@
        :body "Missing name and surname."})))
 
 
-;; try {
-;;   create profile ...;
-;; } catch (SQLiteException sqle) {
-;;  if (SQLiteErrorCode.SQLITE_CONSTRAINT == sqle.getResultCode()) {
-;;    return ...;
-;;  } else {
-;;    throw sqle;
-;;  }
-;; }
 (defn add-person
   [{:keys [name dob]}]
   (if (and name dob)

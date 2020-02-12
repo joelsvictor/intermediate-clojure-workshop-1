@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="WorkshopSavePointREPL" type="ClojureREPL" factoryName="Local" activateToolWindowBeforeRun="false">
+  <configuration default="false" name="WorkshopAppTestREPL" type="ClojureREPL" factoryName="Local" activateToolWindowBeforeRun="false">
     <module name="workshop-app" />
     <setting name="replType" value="NREPL" />
     <setting name="execution" value="LEININGEN" />

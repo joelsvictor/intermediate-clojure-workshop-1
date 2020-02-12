@@ -11,7 +11,7 @@
 (defn -main
   [& _]
   (wads/create-table wads/conn)
-  ;; Task add the middleware here.
+  ;; Task add the middleware catch all exceptions here.
   (raj/run-jetty (-> war/app-routes
                      rmkp/wrap-keyword-params
                      rmp/wrap-params

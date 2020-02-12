@@ -19,7 +19,7 @@
                            "final/src"]
             :test-paths ["7/test" ;; introduction to testing
                          "8/test" ;; property based testing, vars & namespaces, clj to java interop
-                         "9/src"
+                         "9/test"
                          "final/test"]
             :profiles {:test {:dependencies [[org.clojure/test.check "0.10.0"]]}}
             :local-repo ".local-m2")

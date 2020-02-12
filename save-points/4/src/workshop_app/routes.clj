@@ -1,6 +1,5 @@
 (ns workshop-app.routes
   (:require [workshop-app.handlers.users :as wahu]
-            [workshop-app.db.in-mem :as wadim]
             [compojure.core :refer [defroutes GET POST PUT DELETE ANY]]))
 
 

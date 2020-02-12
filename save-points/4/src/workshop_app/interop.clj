@@ -1,6 +1,6 @@
 (ns workshop-app.interop
   (:refer-clojure :rename {get cc-get})
-  (:import (java.util Calendar Comparator Collections ArrayList HashMap AbstractMap$SimpleEntry)
+  (:import (java.util Calendar Comparator ArrayList HashMap AbstractMap$SimpleEntry)
            (java.time.temporal ChronoUnit)
            (java.time LocalDate)))
 
@@ -21,7 +21,7 @@ HashMap                                           ;; a class
 (.put ^HashMap hm "b" 10)                         ;; the first gives us a warning of how it cannot be resolved.
 
 ;; Member access
-;; method acess
+;; method access
 ;; hm.get("a")
 (.get hm "a")
 

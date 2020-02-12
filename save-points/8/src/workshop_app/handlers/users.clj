@@ -1,8 +1,7 @@
 (ns workshop-app.handlers.users
   (:require [workshop-app.db.sqlite :as wads]
             [workshop-app.utils :as wau]
-            [cheshire.core :as json])
-  (:import (org.sqlite SQLiteException SQLiteErrorCode)))
+            [cheshire.core :as json]))
 
 
 (defn get-handler
@@ -20,15 +19,6 @@
        :body "Missing name and surname."})))
 
 
-;; try {
-;;   create profile ...;
-;; } catch (SQLiteException sqle) {
-;;  if (SQLiteErrorCode.SQLITE_CONSTRAINT == sqle.getResultCode()) {
-;;    return ...;
-;;  } else {
-;;    throw sqle;
-;;  }
-;; }
 (defn add-person
   [{:keys [name dob]}]
   (if (and name dob)

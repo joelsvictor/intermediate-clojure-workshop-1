@@ -22,9 +22,10 @@
                            :dob  "2001-01-01"}))
       "Is the creation handler working as expected."))
 
-(deftest add-person-test
-  (is (= {:status 201
-          :body   "Created user."}
+(deftest get-person-test
+  (is (= {:status 200
+          :headers {"content-type" "application/json"}
+          :body nil}
          (wahu/get-person "Joel Victor"))
       "Is the read handler working as expected."))
 

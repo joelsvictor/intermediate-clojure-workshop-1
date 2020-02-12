@@ -24,7 +24,7 @@
                                            {:uri "/joel"}))))
 
 ;; by using higher order functions you can also test behavior without
-;; "mutating" any code.
+;; mutating any code.
 (deftest pure-handle-any-exception
   (testing "Middleware should reject all uri's ending with /"
     (are [expected actual] (= expected actual)

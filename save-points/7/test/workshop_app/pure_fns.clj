@@ -25,7 +25,7 @@
 (deftest pure-handle-any-exception
   (testing "Middleware should reject all uri's ending with /"
     (are [expected actual] (= expected actual)
-                           {:status 500 :body "Internal server error."} ((wamu/handle-any-exception (fn [] (throw (Exception.))))
+                           {:status 500 :body "Internal server error."} ((wamu/handle-any-exception (fn [_] (throw (Exception.))))
                                                                          {})
                            {} ((wamu/handle-any-exception identity)
                                {}))))

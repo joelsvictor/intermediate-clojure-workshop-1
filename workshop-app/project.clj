@@ -4,7 +4,6 @@
                  [compojure "1.6.1"]
                  [cheshire "5.9.0"]
                  [org.xerial/sqlite-jdbc "3.30.1"]]
-  :aot [workshop-app.clj-to-java-interop]
   :main workshop-app.core
   :global-vars {*warn-on-reflection* true}
   :profiles {:test {:dependencies [[org.clojure/test.check "0.10.0"]]}}

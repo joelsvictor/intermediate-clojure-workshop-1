@@ -1,8 +1,6 @@
 (ns workshop-app.handlers.users
-  (:require [workshop-app.db.sqlite :as wadim]
-            [workshop-app.utils :as wau]
-            [cheshire.core :as json])
-  (:import (org.sqlite SQLiteException SQLiteErrorCode)))
+  (:require [workshop-app.db.sqlite :as wads]
+            [cheshire.core :as json]))
 
 
 (defn get-handler
@@ -20,21 +18,12 @@
        :body "Missing name and surname."})))
 
 
-;; try {
-;;   create profile ...;
-;; } catch (SQLiteException sqle) {
-;;  if (SQLiteErrorCode.SQLITE_CONSTRAINT == sqle.getResultCode()) {
-;;    return ...;
-;;  } else {
-;;    throw sqle;
-;;  }
-;; }
 (defn add-person
   [{:keys [name dob]}]
   (if (and name dob)
-    (do (wadim/create! wadim/conn
-                       name
-                       dob)
+    (do (wads/create! wads/conn
+                      name
+                      dob)
         {:status 201
          :body   "Created user."})
     {:status 400
@@ -53,9 +42,9 @@
 (defn update-person
   [{:keys [name dob]}]
   (if (and name dob)
-    (do (wadim/update! wadim/conn
-                       name
-                       dob)
+    (do (wads/update! wads/conn
+                      name
+                      dob)
         {:status 200
          :body   "Updated user."})
     {:status 400
@@ -65,7 +54,7 @@
 (defn delete-person
   [name]
   (if name
-    (do (wadim/delete! wadim/conn name)
+    (do (wads/delete! wads/conn name)
         {:status 200
          :body   "Deleted user."})
     {:status 400

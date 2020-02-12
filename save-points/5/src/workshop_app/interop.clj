@@ -1,6 +1,6 @@
 (ns workshop-app.interop
   (:refer-clojure :rename {get cc-get})
-  (:import (java.util Calendar Comparator Collections ArrayList HashMap AbstractMap$SimpleEntry)
+  (:import (java.util Calendar Comparator ArrayList HashMap AbstractMap$SimpleEntry)
            (java.time.temporal ChronoUnit)
            (java.time LocalDate)))
 
@@ -21,7 +21,7 @@ HashMap                                           ;; a class
 (.put ^HashMap hm "b" 10)                         ;; the first gives us a warning of how it cannot be resolved.
 
 ;; Member access
-;; method acess
+;; method access
 ;; hm.get("a")
 (.get hm "a")
 
@@ -123,6 +123,9 @@ Math/PI
 ;;   LocalDate dateOne = LocalDate.of(2020,1,1);
 ;;   LocalDate dateTwo = LocalDate.now();
 ;;   long daysBetween = ChronoUnits.DAYS.between(dateOne, dateTwo);
-(.between ChronoUnit/DAYS
-          (LocalDate/of 2020 1 1)
-          (LocalDate/now))
+(let [date-one (LocalDate/of 2020 1 1)
+      date-two (LocalDate/now)]
+  (.between ChronoUnit/DAYS
+            date-one
+            date-two))
+

@@ -1,8 +1,6 @@
 (ns workshop-app.routes
   (:require [workshop-app.handlers.users :as wahu]
-            [workshop-app.db.sqlite :as wads]
-            [compojure.core :refer [defroutes GET POST PUT DELETE ANY]])
-  (:import (java.time LocalDate)))
+            [compojure.core :refer [defroutes GET POST PUT DELETE ANY]]))
 
 
 (defroutes app-routes

@@ -17,3 +17,9 @@ save-points/.idea/save-points.iml
 save-points/workshop-app.iml
 workshop-app/.lein-failures
 .current_level
+save-points/.idea/codeStyles/*.xml
+save-points/.idea/workshop-app.iml
+save-points/prod_database_1.sqlite
+workshop-app/.idea/codeStyles/Project.xml
+workshop-app/.idea/codeStyles/codeStyleConfig.xml
+workshop-app/.idea/workshop-app.iml

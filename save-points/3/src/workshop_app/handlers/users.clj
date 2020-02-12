@@ -18,15 +18,6 @@
        :body "Missing name and surname."})))
 
 
-;; try {
-;;   create profile ...;
-;; } catch (SQLiteException sqle) {
-;;  if (SQLiteErrorCode.SQLITE_CONSTRAINT == sqle.getResultCode()) {
-;;    return ...;
-;;  } else {
-;;    throw sqle;
-;;  }
-;; }
 (defn add-person
   [{:keys [name dob]}]
   (if (and name dob)
@@ -40,8 +31,9 @@
 
 
 (defn get-person
-  [dob]
-  {:status  200
-   :headers {"content-type" "application/json"}
-   :body    (when dob
-              (json/generate-string {:dob dob}))})
+  [name]
+  (let [dob (wadim/read wadim/conn name)]
+    {:status  200}
+    :headers {"content-type" "application/json"}
+    :body    (when dob
+               (json/generate-string {:dob dob}))))

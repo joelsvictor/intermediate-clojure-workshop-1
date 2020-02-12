@@ -1,6 +1,7 @@
 (ns workshop-app.property-based-test
   (:require [clojure.test :refer :all]
             [clojure.test.check :as tc]
+            [clojure.test.check.clojure-test :as tcct]
             [clojure.test.check.generators :as ctcg]
             [clojure.test.check.properties :as ctcp]
             [workshop-app.utils :as wau])
@@ -26,4 +27,10 @@
                  end-dt date-object-generator]
                 (age-property-fn (wau/days-between st-dt end-dt))))
 
-(tc/quick-check 1000 age-property)
+#_(tc/quick-check 1000 age-property)
+
+
+(tcct/defspec age-property-2 100
+              (ctcp/for-all [st-dt date-object-generator
+                             end-dt date-object-generator]
+                            (age-property-fn (wau/days-between st-dt end-dt))))

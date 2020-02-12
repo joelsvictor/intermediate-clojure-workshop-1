@@ -6,7 +6,7 @@
 (defroutes app-routes
            (GET "/" _ wahu/get-handler)
            (POST "/:name" {:keys [params]} (wahu/add-person params))
-           (GET "/:name" [name] (wahu/get-person (get (wadim/read wadim/conn name) "dob")))
+           (GET "/:name" [name] (wahu/get-person name))
 
            ;; Add POST and DELETE route for updating and deleting
            ;; the record respectively.
