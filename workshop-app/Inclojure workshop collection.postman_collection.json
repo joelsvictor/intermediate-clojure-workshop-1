@@ -127,6 +127,27 @@
 				"description": "Delete the user. We don't want to be liable #gdpr."
 			},
 			"response": []
+		},
+		{
+			"name": "Invalid request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:65535/joel/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "65535",
+					"path": [
+						"joel",
+						""
+					]
+				},
+				"description": "Any request with a trailing slash."
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
