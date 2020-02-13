@@ -15,12 +15,8 @@
 
 ;; Locks are one way of doing it
 
-;; Most accurate Visualization of using locks
-;; https://twitter.com/valarauca1/status/921542529962557440
-
-
 ;; Clojure does an amazing job where there is immutable data by means of
-;; persistant data structures provided by Clojure core
+;; persistent data structures provided by Clojure core
 
 ;; But what about mutating things?
 

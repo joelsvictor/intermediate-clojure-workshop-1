@@ -5,6 +5,5 @@
                  [cheshire "5.9.0"]
                  [org.xerial/sqlite-jdbc "3.30.1"]]
   :main workshop-app.core
-  :global-vars {*warn-on-reflection* true}
   :profiles {:test {:dependencies [[org.clojure/test.check "0.10.0"]]}}
   :local-repo ".local-m2")

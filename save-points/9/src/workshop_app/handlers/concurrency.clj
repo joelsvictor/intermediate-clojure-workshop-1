@@ -15,12 +15,8 @@
 
 ;; Locks are one way of doing it
 
-;; Most accurate Visualization of using locks
-;; https://twitter.com/valarauca1/status/921542529962557440
-
-
 ;; Clojure does an amazing job where there is immutable data by means of
-;; persistant data structures provided by Clojure core
+;; persistent data structures provided by Clojure core
 
 ;; But what about mutating things?
 
@@ -56,8 +52,8 @@
 
   ;; Guess the output of second deref
   @f
-  @f
-  )
+  @f)
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -74,8 +70,8 @@
   ;; This will block and execute
   (future (Thread/sleep 5000) (deliver p 1))
 
-  @p
-  )
+  @p)
+
 
 
 

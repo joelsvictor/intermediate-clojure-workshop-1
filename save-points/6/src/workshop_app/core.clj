@@ -11,10 +11,10 @@
 (defn -main
   [& _]
   (wads/create-table wads/conn)
-  ;; Task add the middleware catch all exceptions here.
   (raj/run-jetty (-> war/app-routes
                      rmkp/wrap-keyword-params
                      rmp/wrap-params
-                     wamu/handle-any-exception)
+                     wamu/handle-any-exception
+                     wamu/reject-uri-ending-with-slash)
                  {:port 65535
                   :join? false}))
