@@ -7,6 +7,8 @@
            (GET "/" _ wahu/get-handler)
            (POST "/:name" {:keys [params]} (wahu/add-person params))
            (GET "/:name" [name] (wahu/get-person name))
-           (PUT "/:name" {:keys [params]} (wahu/update-person params))
-           (DELETE "/:name" [name] (wahu/delete-person name))
+           ;; Add POST and DELETE route for updating and deleting
+           ;; the record respectively.
+           #_(_ _ _ _)
+           #_(_ _ _ _)
            (ANY "*" _ {:status 404}))

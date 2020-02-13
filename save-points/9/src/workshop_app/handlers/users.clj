@@ -1,8 +1,7 @@
 (ns workshop-app.handlers.users
   (:require [workshop-app.db.sqlite :as wads]
             [workshop-app.utils :as wau]
-            [cheshire.core :as json])
-  (:import (org.sqlite SQLiteException SQLiteErrorCode)))
+            [cheshire.core :as json]))
 
 
 (defn get-handler
@@ -38,8 +37,8 @@
    :headers {"content-type" "application/json"}
    :body    (when dob
               (json/generate-string {:dob dob
-                                     :age (wau/days-between (wau/parse-dt-str dob)
-                                                            now)}))})
+                                     :age (wau/years-between (wau/parse-dt-str dob)
+                                                             now)}))})
 
 
 (defn update-person

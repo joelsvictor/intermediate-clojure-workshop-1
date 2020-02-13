@@ -39,8 +39,8 @@
      :headers {"content-type" "application/json"}
      :body    (when dob
                 (json/generate-string {:dob dob
-                                       :age (wau/days-between (wau/parse-dt-str dob)
-                                                              (LocalDate/now))}))}))
+                                       :age (wau/years-between (wau/parse-dt-str dob)
+                                                               (LocalDate/now))}))}))
 
 
 (defn update-person

@@ -2,9 +2,6 @@
   (:require [clojure.string :as s]))
 
 
-;; Task: Write a middleware and place
-;; use it to reject issues that come through with
-;; / at the end.
 (defn reject-uri-ending-with-slash
   [handler]
   (fn [{:keys [uri] :as request}]

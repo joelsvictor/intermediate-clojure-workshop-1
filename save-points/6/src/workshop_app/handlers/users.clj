@@ -42,9 +42,9 @@
 (defn update-person
   [{:keys [name dob]}]
   (if (and name dob)
-    (do (wads/update! wads/conn
-                      name
-                      dob)
+    (do #_(_/update! wads/conn
+                        name
+                        dob)
         {:status 200
          :body   "Updated user."})
     {:status 400
@@ -54,7 +54,7 @@
 (defn delete-person
   [name]
   (if name
-    (do (wads/delete! wads/conn name)
+    (do #_(_/delete! wads/conn name)
         {:status 200
          :body   "Deleted user."})
     {:status 400

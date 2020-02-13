@@ -25,7 +25,7 @@
 (def age-property
   (ctcp/for-all [st-dt date-object-generator
                  end-dt date-object-generator]
-                (age-property-fn (wau/days-between st-dt end-dt))))
+                (age-property-fn (wau/years-between st-dt end-dt))))
 
 #_(tc/quick-check 1000 age-property)
 
@@ -33,4 +33,4 @@
 (tcct/defspec age-property-2 100
               (ctcp/for-all [st-dt date-object-generator
                              end-dt date-object-generator]
-                            (age-property-fn (wau/days-between st-dt end-dt))))
+                            (age-property-fn (wau/years-between st-dt end-dt))))

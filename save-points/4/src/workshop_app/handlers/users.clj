@@ -37,26 +37,3 @@
      :headers {"content-type" "application/json"}
      :body    (when dob
                 (json/generate-string {:dob dob}))}))
-
-
-
-(defn update-person
-  [{:keys [name dob]}]
-  (if (and name dob)
-    (do (wadim/update! wadim/conn
-                       name
-                       dob)
-        {:status 200
-         :body   "Updated user."})
-    {:status 400
-     :body "User name or dob is missing."}))
-
-
-(defn delete-person
-  [name]
-  (if name
-    (do (wadim/delete! wadim/conn name)
-        {:status 200
-         :body   "Deleted user."})
-    {:status 400
-     :body "User name missing, cannot delete person without username."}))

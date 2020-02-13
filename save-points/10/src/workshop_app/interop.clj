@@ -123,4 +123,8 @@ Math/PI
 ;;   LocalDate dateOne = LocalDate.of(2020,1,1);
 ;;   LocalDate dateTwo = LocalDate.now();
 ;;   long daysBetween = ChronoUnits.DAYS.between(dateOne, dateTwo);
-#_(_ _ _ _)
+(let [date-one (LocalDate/of 2020 1 1)
+      date-two (LocalDate/now)]
+  (.between ChronoUnit/DAYS
+            date-one
+            date-two))

@@ -1,5 +1,5 @@
 (ns workshop-app.handlers.users
-  (:require [workshop-app.db.sqlite :as wads]
+  (:require [workshop-app.db.in-mem :as wadim]
             [cheshire.core :as json]))
 
 
@@ -21,9 +21,9 @@
 (defn add-person
   [{:keys [name dob]}]
   (if (and name dob)
-    (do (wads/create! wads/conn
-                      name
-                      dob)
+    (do (wadim/create! wadim/conn
+                       name
+                       dob)
         {:status 201
          :body   "Created user."})
     {:status 400
@@ -32,7 +32,7 @@
 
 (defn get-person
   [name]
-  (let [{:strs [dob]} (wads/read wads/conn name)]
+  (let [dob (wadim/read wadim/conn name)]
     {:status  200
      :headers {"content-type" "application/json"}
      :body    (when dob
@@ -43,9 +43,9 @@
 (defn update-person
   [{:keys [name dob]}]
   (if (and name dob)
-    (do (wads/update! wads/conn
-                      name
-                      dob)
+    (do (wadim/update! wadim/conn
+                       name
+                       dob)
         {:status 200
          :body   "Updated user."})
     {:status 400
@@ -55,7 +55,7 @@
 (defn delete-person
   [name]
   (if name
-    (do (wads/delete! wads/conn name)
+    (do (wadim/delete! wadim/conn name)
         {:status 200
          :body   "Deleted user."})
     {:status 400

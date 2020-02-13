@@ -7,12 +7,7 @@
 ;; / at the end.
 (defn reject-uri-ending-with-slash
   [handler]
-  (fn [{:keys [uri] :as request}]
-    (if (and (not= uri "/")
-             (s/ends-with? uri "/"))
-      {:status 400
-       :body   "Bad request."}
-      (handler request))))
+  (fn [request]))
 
 
 (defn handle-any-exception

@@ -41,9 +41,9 @@
 ;; statement.close();
 (defn update!
   [conn k v]
-  #_(_ [statement (_ (.prepareStatement ^Connection conn "update person set dob=? where name=?")
-                  (.setString 2 k)
-                  (.setString 1 v))]
+  (with-open [statement (doto (.prepareStatement ^Connection conn "update person set dob=? where name=?")
+                          (.setString 2 k)
+                          (.setString 1 v))]
     (.executeUpdate statement)))
 
 
@@ -54,10 +54,9 @@
 ;; statement.close();
 (defn delete!
   [conn k]
-  #_(let [statement _]
+  (with-open [statement (.prepareStatement ^Connection conn "delete from person where name=?")]
     (.setString ^PreparedStatement statement 1 k)
-    (.executeUpdate statement)
-    _))
+    (.executeUpdate statement)))
 
 
 ;; Statement statement = conn.prepareStatement("select name, dob from person where name=?");
