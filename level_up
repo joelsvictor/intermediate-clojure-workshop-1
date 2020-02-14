@@ -27,12 +27,15 @@ echo "Moving to savepoint:" $next_level
 # fi
 
 ## backing your solution
-mkdir -p ./your-solutions/$current_level/src/ ./your-solutions/$current_level/test/
-cp -R ./workshop-app/src/ ./your-solutions/$current_level/src/
-cp -R ./workshop-app/test/ ./your-solutions/$current_level/test/
+# mkdir -p ./your-solutions/$current_level/src/ ./your-solutions/$current_level/test/
+# cp -R ./workshop-app/src/ ./your-solutions/$current_level/src/
+# cp -R ./workshop-app/test/ ./your-solutions/$current_level/test/
 
 rm -r ./workshop-app/src/ ./workshop-app/test/
 mkdir -p ./workshop-app/src/ ./workshop-app/test/
 
 cp -R ./save-points/$next_level/src/ ./workshop-app/src/
-cp -R ./save-points/$next_level/test/ ./workshop-app/test/
+if [ -d ./save-points/$next_level/test ]
+then
+    cp -R ./save-points/$next_level/test/ ./workshop-app/test/
+fi

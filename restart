@@ -20,12 +20,15 @@ echo "Resetting to save point:" $level
 # fi
 
 # backing your solution
-mkdir -p ./your-solutions/$level/src/ ./your-solutions/$level/test/
-cp -R ./workshop-app/src/ ./your-solutions/$level/src/
-cp -R ./workshop-app/test/ ./your-solutions/$level/test/
+# mkdir -p ./your-solutions/$level/src/ ./your-solutions/$level/test/
+# cp -R ./workshop-app/src/ ./your-solutions/$level/src/
+# cp -R ./workshop-app/test/ ./your-solutions/$level/test/
 
 rm -r ./workshop-app/src/ ./workshop-app/test/
 mkdir -p ./workshop-app/src/ ./workshop-app/test/
 
 cp -R ./save-points/$level/src/ ./workshop-app/src/
-cp -R ./save-points/$level/test/ ./workshop-app/test/
+if [ -d ./save-points/$next_level/test/ ]
+then
+    cp -R ./save-points/$next_level/test/ ./workshop-app/test/
+fi
