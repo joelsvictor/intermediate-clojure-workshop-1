@@ -1,4 +1,4 @@
-(ns workshop-app.mocking-fns
+(ns workshop-app.handlers.users-test-2
   (:require [clojure.test :refer :all]
             [workshop-app.handlers.users :as wahu]
             [workshop-app.db.sqlite :as wads]

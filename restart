@@ -3,21 +3,21 @@
 level=${1:-1}
 echo $level > .current_level
 echo "Resetting to save point:" $level
-if [ -f ./workshop-app/target/ ]
-then
-  rm -r ./workshop-app/target/
-fi
+# if [ -f ./workshop-app/target/ ]
+# then
+#   rm -r ./workshop-app/target/
+# fi
 
-if [ -f ./workshop-app/.nrepl-port ]
-then
-  rm -r ./workshop-app/.nrepl-port
-fi
+# if [ -f ./workshop-app/.nrepl-port ]
+# then
+#   rm -r ./workshop-app/.nrepl-port
+# fi
 
 
-if [ -f ./workshop-app/prod_database_1.sqlite ]
-then
-  rm ./workshop-app/prod_database_1.sqlite
-fi
+# if [ -f ./workshop-app/prod_database_1.sqlite ]
+# then
+#   rm ./workshop-app/prod_database_1.sqlite
+# fi
 
 # backing your solution
 mkdir -p ./your-solutions/$level/src/ ./your-solutions/$level/test/
